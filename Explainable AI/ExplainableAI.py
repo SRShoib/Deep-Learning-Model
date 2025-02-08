@@ -39,7 +39,7 @@ full_dataset = datasets.ImageFolder(root=dataset_path, transform=transform)
 num_classes = len(full_dataset.classes)
 
 dropout_rate = 0.5
-pooling_type = "average"  # 'max' or 'attention'
+pooling_type = "average"  # Options: 'max' or 'attention'
 model_save_path = r"savedmodelpath.pth"  #give your path where model is saved
 
 #you can use any model funtion for you
