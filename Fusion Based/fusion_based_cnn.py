@@ -66,9 +66,12 @@ transform = transforms.Compose([
 ])
 
 # Load dataset
-dataset_path = "D:\\Research\\Propagranate\\Augmented_Images"  # <-- Set your dataset path
+dataset_path = r"dataset path"  # <-- Set your dataset path
 full_dataset = datasets.ImageFolder(root=dataset_path, transform=transform)
 num_classes = len(full_dataset.classes)
+
+# Local save path for model
+save_path = r"D:savemodel.pth"  # Local save path where model will save after tarining with name.pth
 
 # Split dataset into train, validation, and test sets (70%, 15%, 15%)
 train_size = int(0.7 * len(full_dataset))
@@ -153,7 +156,7 @@ for epoch in range(num_epochs):
     # Save the best model
     if epoch_val_acc > best_val_acc:
         best_val_acc = epoch_val_acc
-        save_path = r"D:\\Research\\Propagranate\\model\\best_fusion_cnn_augmented.pth"  # Local save path
+        
         torch.save(model.state_dict(), save_path)
         print(f"Model saved at {save_path}")
 
@@ -182,7 +185,7 @@ plt.grid(True)
 plt.show()
 
 # Load the best model
-model.load_state_dict(torch.load("D:\\Research\\Propagranate\\model\\best_fusion_cnn_augmented.pth"))
+model.load_state_dict(torch.load(save_path))
 model.eval()
 
 # Get predictions on the test set
@@ -436,7 +439,7 @@ def generate_and_plot_heatmaps(model, test_loader, class_names):
 
 # Load the Best Model
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model.load_state_dict(torch.load("D:\\Research\\Propagranate\\model\\best_fusion_cnn_augmented.pth"))
+model.load_state_dict(torch.load(save_path))
 model.to(device)
 model.eval()
 
