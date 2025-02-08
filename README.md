@@ -1,2 +1,2 @@
 # Deep-Learning-Model
-Here some Deep Learnig models customize by me
+Here my customized Deep Learnig models
