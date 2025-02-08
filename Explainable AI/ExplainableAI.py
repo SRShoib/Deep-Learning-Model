@@ -25,7 +25,7 @@ torch.manual_seed(42)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Paths
-dataset_path = "D:\\Research\\Propagranate\\Pomegranate_Diseases_Dataset"  # Path to your dataset
+dataset_path = r"dataset path"  # Path to your dataset
 
 # Data transformations
 transform = transforms.Compose([
@@ -39,10 +39,11 @@ full_dataset = datasets.ImageFolder(root=dataset_path, transform=transform)
 num_classes = len(full_dataset.classes)
 
 dropout_rate = 0.5
-pooling_type = "average"
-model_save_path = r"D:\\Research\\Propagranate\\model\\best_attention_cnn_kfold22.pth"
+pooling_type = "average"  # 'max' or 'attention'
+model_save_path = r"savedmodelpath.pth"  #give your path where model is saved
 
-# Define the Model
+#you can use any model funtion for you
+# Define the Model 
 class AttentionCNN(nn.Module):
     def __init__(self, num_classes, pooling_type):
         super(AttentionCNN, self).__init__()
