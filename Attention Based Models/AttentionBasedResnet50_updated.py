@@ -24,7 +24,7 @@ torch.manual_seed(42)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Paths
-dataset_path = "D:\\Research\\Propagranate\\Preprocessed_data\\Enhanced_brightness"  # Path to your dataset
+dataset_path = r"dataset path"  # Path to your dataset
 
 # Data transformations
 transform = transforms.Compose([
@@ -84,7 +84,7 @@ class AttentionCNN(nn.Module):
         output = self.classifier(pooled_features)
         return output
 
-model_save_path = r"D:\\Research\\Propagranate\\model\\best_attention_cnn_processed_kfold6.pth"
+model_save_path = r"D/where_model_will_savepath.pth"  # give the path with name.pth, where model will save
 
 # Perform K-Fold Cross-Validation
 all_train_losses = []
